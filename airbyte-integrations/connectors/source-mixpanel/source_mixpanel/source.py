@@ -163,6 +163,3 @@ class SourceMixpanel(AbstractSource):
                 stream.reqs_per_hour_limit = reqs_per_hour_limit
                 streams.append(stream)
         return streams
-
-
-# SJJSJSJSJSJSJSJSJ
