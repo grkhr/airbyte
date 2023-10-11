@@ -36,7 +36,7 @@ class TokenAuthenticatorBase64(TokenAuthenticator):
 
 
 class SourceMixpanel(AbstractSource):
-    STREAMS = [Cohorts, CohortMembers, Funnels, Revenue, Export, Annotations, Engage]
+    STREAMS = [Export]
 
     @staticmethod
     def get_authenticator(config: Mapping[str, Any]) -> TokenAuthenticator:
