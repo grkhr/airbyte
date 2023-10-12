@@ -121,7 +121,7 @@ class SourceMixpanel(AbstractSource):
         for stream_class in self.STREAMS:
             try:
                 stream = stream_class(**stream_kwargs)
-                next(read_full_refresh(stream), None)
+                # next(read_full_refresh(stream), None) # skip
                 return True, None
             except requests.HTTPError as e:
                 try:
