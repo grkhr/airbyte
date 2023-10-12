@@ -126,7 +126,7 @@ class SourceMixpanel(AbstractSource):
             except requests.HTTPError as e:
                 try:
                     reason = e.response.json()["error"]
-                except json.JSONDecoder:
+                except json.JSONDecodeError:
                     reason = e.response.content
                 if e.response.status_code != 402:
                     return False, reason
