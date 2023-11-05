@@ -11,7 +11,7 @@ import requests
 from airbyte_cdk.models import SyncMode
 from airbyte_cdk.sources.utils.transform import TransformConfig, TypeTransformer
 
-from ..property_transformation import transform_property_names
+from ..property_transformation import transform_property_names, fix_broken_names
 from .base import DateSlicesMixin, IncrementalMixpanelStream, MixpanelStream
 
 
