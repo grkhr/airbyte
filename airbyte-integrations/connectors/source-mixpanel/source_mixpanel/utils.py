@@ -61,16 +61,3 @@ def fix_date_time(record):
     elif isinstance(record, list):
         for entry in record:
             fix_date_time(entry)
-
-
-def fix_broken_names(properties: dict):
-    replacements = {
-        "slippageTolerance": "SlippageTolerance",
-    }
-
-    for key, value in list(properties.items()):
-        if key in replacements:
-            properties[replacements[key]] = value
-            properties.pop(key)
-
-    return properties

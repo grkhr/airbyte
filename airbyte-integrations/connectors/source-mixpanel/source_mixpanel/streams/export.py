@@ -11,7 +11,7 @@ import requests
 from airbyte_cdk.models import SyncMode
 from airbyte_cdk.sources.utils.transform import TransformConfig, TypeTransformer
 
-from ..property_transformation import transform_property_names, fix_broken_names
+from ..property_transformation import transform_property_names
 from .base import DateSlicesMixin, IncrementalMixpanelStream, MixpanelStream
 
 
@@ -146,7 +146,7 @@ class Export(DateSlicesMixin, IncrementalMixpanelStream):
         for record in self.iter_dicts(response.iter_lines(decode_unicode=True)):
             # transform record into flat dict structure
             item = {"event": record["event"]}
-            properties = fix_broken_names(record["properties"])
+            properties = record["properties"]
             for result in transform_property_names(properties.keys()):
                 # Convert all values to string (this is default property type)
                 # because API does not provide properties type information
