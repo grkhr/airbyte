@@ -146,7 +146,7 @@ class Export(DateSlicesMixin, IncrementalMixpanelStream):
         for record in self.iter_dicts(response.iter_lines(decode_unicode=True)):
             # transform record into flat dict structure
             item = {"event": record["event"]}
-            properties = record["properties"]
+            properties = fix_broken_names(record["properties"])
             for result in transform_property_names(properties.keys()):
                 # Convert all values to string (this is default property type)
                 # because API does not provide properties type information
