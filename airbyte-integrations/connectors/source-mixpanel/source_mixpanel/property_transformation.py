@@ -36,3 +36,16 @@ def transform_property_names(property_names: Iterable[str]) -> Iterator[Transfor
 
         lowercase_properties.add(lowercase_property_name)
         yield TransformationResult(source_name=property_name, transformed_name=property_name_transformed)
+
+
+def fix_broken_names(properties: dict):
+    replacements = {
+        "slippageTolerance": "SlippageTolerance",
+    }
+    out = {}
+    for key, value in properties.items():
+        if key in replacements:
+            out[replacements[key]] = value
+        else:
+            out[key] = value
+    return out
