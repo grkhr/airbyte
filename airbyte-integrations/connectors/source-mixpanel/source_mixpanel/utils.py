@@ -67,10 +67,10 @@ def fix_broken_names(properties: dict):
     replacements = {
         "slippageTolerance": "SlippageTolerance",
     }
-    out = {}
-    for key, value in properties.items():
+
+    for key, value in list(properties.items()):
         if key in replacements:
-            out[replacements[key]] = value
-        else:
-            out[key] = value
-    return out
+            properties[replacements[key]] = value
+            properties.pop(key)
+
+    return properties
