@@ -217,6 +217,7 @@ class DateSlicesMixin:
                 "start_date": str(start_date),
                 "end_date": str(min(current_end_date, end_date)),
             }
+            self.logger.info(f"Fetching data for {stream_slice['start_date']} - {stream_slice['end_date']}")
             if cursor_value:
                 stream_slice[self.cursor_field] = cursor_value
             yield stream_slice
